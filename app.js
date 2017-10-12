@@ -1,9 +1,15 @@
 var express = require ("express"); // Inclui conteúdo do módulo Express
 var app = express(); // Executa Express e salva na variável
+var bodyParser = require("body-parser"); // Inclui conteúdo do módulo Body-Parser
 
 app.use(express.static("public")); //Utiliza o conteúdo da pasta public
-app.use(express.static("public/partials")); 
+app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
+
+// Array de amigos para POST
+var amigos = [
+    "Daniel", "Luana", "Pedro", "Elis", "Rodrigo"
+];
 
 //Rotas:
 // Raíz
@@ -50,15 +56,16 @@ app.get("/r/:subredditNome/comments/:id/:titulo", function(req, res){
 
 // Página de amigos
 app.get("/amigos", function(req, res) {
-    var amigos = [
-        "Daniel", "Luana", "Pedro", "Elis", "Rodrigo"
-    ];
+    
     res.render("amigos", {amigos: amigos});
 });
 
 // Trabalhando com Post
 app.post("/adicionaamigo", function(req, res){
-    res.send("Você alcançou a rota do POST");
+    console.log(req.body);
+    var novoAmigo = req.body.novoamigo;
+    amigos.push(novoAmigo);
+    res.redirect("/amigos");
 });
 
 // Mostra erro caso usuário não digite uma página existente
