@@ -9,10 +9,13 @@ app.get("/", function(req, res){
 });
 
 
-// "/tchau" => "Tchau!"
-app.get("/tchau", function(req, res){
-    res.send("Tchau!")
+// Rota dinâmica
+app.get("/tchau/:pessoa", function(req, res){
+    var pessoa = req.params.pessoa;
+    res.render("despedida.ejs", {pessoaVar: pessoa})
 });
+
+
 // "/cachorro" => "MEOW!!"
 app.get("/cachorro", function(req, res){
     res.send("MEOW!!")
