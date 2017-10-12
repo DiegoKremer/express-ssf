@@ -1,3 +1,5 @@
+<% include partials/header %>
+
 <h1>A página dos Posts</h1>
 
 <% for (var i = 0; i < posts.length; i++){ %>
@@ -5,3 +7,5 @@
         <%= posts[i].titulo %> - <strong><%= posts[i].autor %></strong>
     </li>
 <% } %>
+
+<% include partials/footer %>

@@ -1,10 +1,14 @@
 var express = require ("express"); // Inclui conteúdo do módulo Express
 var app = express(); // Executa Express e salva na variável
 
+app.use(express.static("public")); //Utiliza o conteúdo da pasta public
+app.use(express.static("public/partials")); 
+app.set("view engine", "ejs");
+
 //Rotas:
 // Raíz
 app.get("/", function(req, res){
-    res.render("principal.ejs");
+    res.render("principal");
     //res.send("Olá! Bem vindo ao tutorial de Express")
 });
 
@@ -12,7 +16,7 @@ app.get("/", function(req, res){
 // Rota dinâmica
 app.get("/tchau/:pessoa", function(req, res){
     var pessoa = req.params.pessoa;
-    res.render("despedida.ejs", {pessoaVar: pessoa})
+    res.render("despedida", {pessoaVar: pessoa})
 });
 
 app.get("/posts", function(req,res) {
@@ -21,7 +25,7 @@ app.get("/posts", function(req,res) {
         {titulo: "Meu coelhinho de estimação", autor: "Ana"},
         {titulo: "Dá pra acreditar nesse Pomsky?", autor: "Jose"}
     ];
-    res.render("posts.ejs", {posts: posts})
+    res.render("posts", {posts: posts})
 });
 
 

@@ -1,3 +1,5 @@
+<% include partials/header %>
+
 <h1>Você se despediu de <%= pessoaVar %></h1>
 
 <% if(pessoaVar.toLowerCase() === "diego") { %>
@@ -5,3 +7,5 @@
 <% } else { %>
     <p>Você deveria ter dito tchau ao Diego!</p>
 <% } %>
+
+<% include partials/footer %>
