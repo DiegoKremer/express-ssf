@@ -47,6 +47,20 @@ app.get("/r/:subredditNome/comments/:id/:titulo", function(req, res){
     res.send("Bem vindo a página de comentários") 
 });
 
+
+// Página de amigos
+app.get("/amigos", function(req, res) {
+    var amigos = [
+        "Daniel", "Luana", "Pedro", "Elis", "Rodrigo"
+    ];
+    res.render("amigos", {amigos: amigos});
+});
+
+// Trabalhando com Post
+app.post("/adicionaamigo", function(req, res){
+    res.send("Você alcançou a rota do POST");
+});
+
 // Mostra erro caso usuário não digite uma página existente
 app.get("*", function(req, res){
     res.send("Página não encontrada!")
