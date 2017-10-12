@@ -2,9 +2,10 @@ var express = require ("express"); // Inclui conteúdo do módulo Express
 var app = express(); // Executa Express e salva na variável
 
 //Rotas:
-// "/" => "Olá!"
+// Raíz
 app.get("/", function(req, res){
-    res.send("Olá!")
+    res.render("principal.ejs");
+    //res.send("Olá! Bem vindo ao tutorial de Express")
 });
 
 
