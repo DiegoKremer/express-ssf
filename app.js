@@ -15,6 +15,15 @@ app.get("/tchau/:pessoa", function(req, res){
     res.render("despedida.ejs", {pessoaVar: pessoa})
 });
 
+app.get("/posts", function(req,res) {
+    var posts = [
+        {titulo: "Post 1", autor: "Susana"},
+        {titulo: "Meu coelhinho de estimação", autor: "Ana"},
+        {titulo: "Dá pra acreditar nesse Pomsky?", autor: "Jose"}
+    ];
+    res.render("posts.ejs", {posts: posts})
+});
+
 
 // "/cachorro" => "MEOW!!"
 app.get("/cachorro", function(req, res){

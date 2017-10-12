@@ -1,1 +1,7 @@
 <h1>Você se despediu de <%= pessoaVar %></h1>
+
+<% if(pessoaVar.toLowerCase() === "diego") { %>
+<p>É BOM SE LIVRAR DO DIEGO MESMO!</p>
+<% } else { %>
+    <p>Você deveria ter dito tchau ao Diego!</p>
+<% } %>
